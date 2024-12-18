@@ -40,8 +40,7 @@ class GameAdapter(private var context: Context, var list: MutableList<Game>) : B
         gameName.text = list[position].gameName
         gameNrOfPlayers.text = list[position].NrOfPlayers.toString()
 
-        // Handle the delete functionality
-        var deleteButton = rowView.findViewById<ImageView>(R.id.deleteButton) // Ensure you have a delete button in the layout
+        var deleteButton = rowView.findViewById<ImageView>(R.id.deleteButton)
         deleteButton.setOnClickListener {
 
             showDeleteConfirmationDialog(position)
@@ -50,10 +49,9 @@ class GameAdapter(private var context: Context, var list: MutableList<Game>) : B
         return rowView
     }
 
-    // Function to remove a game from the list
     fun removeGame(position: Int) {
-        list.removeAt(position) // Remove the game from the mutable list
-        notifyDataSetChanged()   // Notify the adapter to refresh the list
+        list.removeAt(position)
+        notifyDataSetChanged()
     }
 
     private fun showDeleteConfirmationDialog(position: Int) {
@@ -62,13 +60,12 @@ class GameAdapter(private var context: Context, var list: MutableList<Game>) : B
             .setMessage("Are you sure you want to delete this game?")
             .setCancelable(false)
             .setPositiveButton("Yes") { dialog, id ->
-                removeGame(position)  // Remove the game if user confirms
+                removeGame(position)
             }
             .setNegativeButton("No") { dialog, id ->
-                dialog.dismiss()  // Dismiss the dialog if user cancels
+                dialog.dismiss()
             }
 
-        // Show the dialog
         val alert = builder.create()
         alert.show()
     }

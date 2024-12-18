@@ -23,7 +23,6 @@
 
             </intent-filter>
         </activity>
-        <!-- DetailsActivity, GameListActivity with no theme override -->
         <activity
             android:name=".DetailsActivity"
             android:exported="false" />
